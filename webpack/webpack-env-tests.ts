@@ -1,16 +1,17 @@
 /// <reference path="./webpack-env.d.ts" />
+import {module, require as Require } from 'webpack-env'; 
 
 interface SomeModule {
     someMethod(): void;
 }
 
-let someModule = require<SomeModule>('./someModule');
+let someModule = Require<SomeModule>('./someModule');
 someModule.someMethod();
 
-let context = require.context('./somePath', true);
+let context = Require.context('./somePath', true);
 let contextModule = context<SomeModule>('./someModule');
 
-require(['./someModule', './otherModule'], (someModule: SomeModule, otherModule: any) => {
+Require(['./someModule', './otherModule'], (someModule: SomeModule, otherModule: any) => {
 
 });
 
